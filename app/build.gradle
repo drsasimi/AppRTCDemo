@@ -1,19 +1,19 @@
 apply plugin: 'com.android.application'
 
 android {
-  compileSdkVersion 23
-  buildToolsVersion '25.0.0'
+  compileSdkVersion 26
+  buildToolsVersion '26.0.2'
 
-  sourceSets.main {
-    jniLibs.srcDir 'libs'
-    jni.srcDirs = [] //disable automatic ndk-build call
-  }
+//  sourceSets.main {
+//    jniLibs.srcDir 'libs'
+//    jni.srcDirs = [] //disable automatic ndk-build call
+//  }
 
 
   defaultConfig {
     applicationId "org.appspot.apprtc"
     minSdkVersion 16
-    targetSdkVersion 21
+    targetSdkVersion 26
 
     versionCode 15663
     versionName "r15663"
@@ -32,11 +32,18 @@ android {
   lintOptions {
     abortOnError false
   }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
 }
 
 dependencies {
-  compile files('libs/audio_device_java.jar')
+//  compile files('libs/audio_device_java.jar')
+//  compile files('libs/base_java.jar')
+//  compile files('libs/libjingle_peerconnection.jar')
+  compile 'org.webrtc:google-webrtc:1.0.20849'
+
   compile files('libs/autobanh.jar')
-  compile files('libs/base_java.jar')
-  compile files('libs/libjingle_peerconnection.jar')
 }
